@@ -16,7 +16,7 @@ from mysql.connector import Error
 class User():
     # Connection with mysql database
     try:
-        connection = mysql.connector.connect(host='localhost', database='harsha', user='root', password='rootpw')
+        connection = mysql.connector.connect(host='localhost', database='database_name', user='root', password='database_password')
         if connection.is_connected():
             cursor = connection.cursor()
             cursor.execute("select database();")
@@ -26,7 +26,7 @@ class User():
         print("Error while connecting to MySQL", e)
 
     def __init__(self, email=None, password=None):
-        self.mydb = mysql.connector.connect(host="localhost", user="root", password="rootpw", database="harsha")
+        self.mydb = mysql.connector.connect(host="localhost", user="root", password="database_name", database="database_name")
         self.myCursor = self.mydb.cursor()
 
         def register(self):
@@ -176,7 +176,7 @@ class User():
         # Known Command History
         def save(self, command):
             try:
-                self.mydb = mysql.connector.connect(host="localhost", user="root", password="rootpw", database="harsha")
+                self.mydb = mysql.connector.connect(host="localhost", user="root", password="database_password", database="database_name")
                 self.myCursor = self.mydb.cursor()
                 binary = 0
                 today = date.today()
@@ -192,7 +192,7 @@ class User():
         # Unknown Command History
         def notsave(self, command):
             try:
-                self.mydb = mysql.connector.connect(host="localhost", user="root", password="rootpw", database="harsha")
+                self.mydb = mysql.connector.connect(host="localhost", user="root", password="database_password", database="database_name")
                 self.myCursor = self.mydb.cursor()
                 binary = 1
                 today = date.today()
@@ -208,7 +208,7 @@ class User():
         # saving all commands
         def prompt(self, command):
             try:
-                self.mydb = mysql.connector.connect(host="localhost", user="root", password="rootpw", database="harsha")
+                self.mydb = mysql.connector.connect(host="localhost", user="root", password="database_password", database="database_name")
                 self.myCursor = self.mydb.cursor()
                 today = date.today()
                 d = today.strftime("%Y-%m-%d")
@@ -222,7 +222,7 @@ class User():
         # Saving All Answers
         def ans(self, a):
             try:
-                self.mydb = mysql.connector.connect(host="localhost", user="root", password="rootpw", database="harsha")
+                self.mydb = mysql.connector.connect(host="localhost", user="root", password="database_name", database="database_name")
                 self.myCursor = self.mydb.cursor()
                 today = date.today()
                 d = today.strftime("%Y-%m-%d")
@@ -469,7 +469,7 @@ class User():
                 speak(a)
                 msg = take_command(self)
                 print(msg)
-                cont = "+917738585547"
+                cont = "+91XXXXXXXXXX"
                 pywhatkit.sendwhatmsg(cont, msg, 10, 10)
                 b = "Successfully sent"
                 ans(self, b)
